@@ -1,0 +1,63 @@
+Data and Code Organization
+----------------------------
+
+Data
+-----
+
+This directory contains the data and code used for the paper " Evaluating Image Retrieval", by Kobus Barnard, and Nikhil Shirahatti. Also, the data is currently being used for CVPR paper "Evaluating Image Retrieval", 2005.
+
+The data was collected using an on-line evaluation strategy. The on-line interface was developed and is being maintained by Nikhil Shirahatti (nvs@CS.arizona.edu) The data is due to the collective effort of 32 students and we are thankful for their help.
+
+Data Description
+
+The data consists of human evaluation scores for a pair of query-result images. The pre-processing step involved an intelligent selection of the query-result pairs such that they span the broad spectrum of choices i.e colloquially speaking from a good match to a poor match. We cannot choose query/result images at random as most of them will be judged as a poor match, hence resulting in a poor data. The main stratergy is to use existing image retrieval systems to select serviceable image pairs. Unfortunately, image retrieval systems do not work well, hence we propose using an exponential function ancilliary to the retrieval system to obtain a roughly uniform distribution over the choices. We also stress on collecting more data as this will alow us to be approximate in the uniformity but still have enough examples over the human responses. The data consists of query-result pairs from four content-based image retrieval systems. This setup is conformed so as to be cautious about not introducing abnormalities in the data because of irregularities of certain image retrieval systems.
+
+The experimental routine was as follows: First, the query image and result images from the four CBIR systems were displayed in random order. Then the user rated each match on a scale of 1 to 5 with 1 being a poor match and 5 a good match. We maintain the first 100 queries as common to all users so as to reduce the variance among evaluators. The rest of the images evaluated by the users, are unique. To get a coomon domain of scores, we mapped the computer scores to the adjusted human scores by three mapping methods. The mapping method the yielded the best correlation was retained. The agreement between the mapped scores and the adjusted human scores gave a indication of performance. Also, the data gives us options to measure precision-recall and normalized-rank.
+
+We present the image retrieval community with a data set of image pairs marked with a relevance score. This score is adjusted for reducing variance among the participants that evaluted this set. To download data click here .
+
+The other data available for download is the annotation ground-truth system. This data is obtained from the annotation engine of Kobus' system [Words and Pictures]. The data consists of an annotation score for the same query-image pairs. To download data click here .
+
+In order to allow researches use our data we have made available the groundtruth data freely downloadable. For choice of performances indices, you could refer our paper for the ones we have used or you could come up with your own. The database we use in our research was provided by Corel. This database has copyright restrictions and may not be freely distributed. But for those researches who have access to the Corel, our ground-truth data should simplify things because we use Corel's indexing scheme. We hope to develop a copyright free database in the future. For any information regarding benchmarking contact: Nikhil Shirahatti (nvs@cs.arizona.edu)
+
+Code
+-----
+
+Please direct questions and comments to Nikhil Shirahatti.
+
+The benchmarking suite Copyright Retrieval Analyzer©  includes a collection of two mapping methods described below. The inputs to Copyright Retrieval Analyzer©  are a vector of computer scores (your image retrieval scores for the image pairs we have provided in our ground truth data) and corresponding human scores (our ground truth data). The outputs consist of a correlation score, an estimated precision-recall curve and an estimated normalized rank. We provide an option for chosing from any of the three mapping methods, but we recommend using the default option which chooses the mapping method that maximizes the correlation score.
+
+This suite is our implementaion of the algorithm we proposed in "Evaluating Image Retrieval". Specifically, I have included one example input file which generates one of the results found in that paper. The paper consists of an additional algorithm termed as monotonic bayesian curve fitting which was obtained from Nicholas Heard.
+
+Support
+This suite has been tested on Linux (Redhat and Fedora distributions). I have not tested it on any other unix/linux platforms. This program does not work on Microsoft Windows. However, if you are succesfull in porting this program to either Windows or a different linux/unix distribution, then I encourage you to share it with others. Send me an email and I will be happy to setup a link to a ported version.
+
+Terms of Use
+The use of this software is restricted to educational and research purposes. Modifying the code is encouraged, as long as appropriate credit is provided, and authorship is not misrepresented. If you would like to make commercial use of any of the code being distributed, then please contact me (shirahatti AT gmail DOT com).
+
+If you make use of this software for your research, I would appreciate it if you cite or acknowlege the web site and/or the "Evaluating Image Retrieval".
+
+Credits
+Kobus Barnard who, as my advisor helped me understand the problem and guided me while I tried solving this benchmarking bugaboo. It is the combined effort of both of us and long hours spent by me and my fellow computer vision collegues that we have a working benchmarking suite and a collection of ground truth data. Kudos to all the participants who have helped me collect an appreciable amount of data. Also, many thanks to Nicholas Heard for providing with the source code for a bayesian approach to curve fitting (discussed below). My regards to Copyright Mathworks©  for providing the optimization toolkit.
+
+Installation
+Once you have downloaded, unzipped, and untarred, you will have three directories.
+
+1. Code
+
+It contains a number of matlab files listed below, and a script file. 
+The files are:
+
+code/clmsSys.m -- matlab code for performing constrained least means squared fitting
+code/ccmSys.m -- matlab code for performing constrained correlation maximization fitting
+code/getRand.m -- random sampling of a vector of values
+code/myfunc.m -- the function minimized in ccmSys.m
+
+2. Data
+
+This consists of a test file which is a part of the results published in the paper "Evaluating Image Retrieval". This data consists of computer scores for images selected using the GNU image finding tool. This data forms a part of our ground truth data. Also in the research page of Nikhil Shirahatti's website are the correlation scores, precision-recall curves and normalized ranks for this test data.
+
+3. Result
+
+On running the scripts the results are put into a text file "results.txt" in this directory.
+This text file contains the correlation scores using the two mapping methods. Also is saved a normalized_ranks.txt which contains the normalized rank and a PR plot figure "pr.jpg".

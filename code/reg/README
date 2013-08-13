@@ -1,0 +1,74 @@
+
+GAUSSIAN PROCESS CLUSTERING OF MULTIVARIATE TIME SERIES
+
+  This software was written by
+
+Nicholas A. Heard at
+Department of Mathematics, Imperial College, London.
+
+  for implementation of the methods described in the Imperial College
+  technical report "A quantitative study of gene regulation involved
+  in the immune response of Anopheline mosquitoes: An Application of
+  Bayesian Hierarchical Clustering of Curves"(2003) by N A Heard, C C
+  Holmes and D A Stephens.
+
+Any problems/comments email: n.heard@ic.ac.uk
+
+******************************************************************
+
+
+INSTRUCTIONS
+
+Assuming that the programs have already been unpacked.
+
+1. Change the definition of "CXX" in Makefile to use your local ANSI C
+   compiler
+
+2. Type "make all" to form the executable programs
+
+
+*********************************************************************
+
+RUNNING THE PROGRAMS
+
+The makefile creates 3 programs:
+i. mvn_spline_fitting
+ii. mvn_spline_clustering
+iii. mvn_spline_mcmc_clustering
+
+The first fits a Gaussian process to the data and writes the mean
+level function to a file specified by the option predfile=.
+
+The programs all expect two input files to be given at the command line,
+one containing the time points of the observations and the other the
+observed responses.  A range of extra optional parameters/file paths
+are also available.
+
+To see a list of all the optional parameters, run the program with the argument 'help', e.g.
+
+./mvn_spline_clustering help
+
+
+
+*********************************************************************
+
+**********************************************************************
+Last modified 16 April 2004
+**********************************************************************
+
+COPYRIGHT
+
+(c) Copyright Nicholas Heard 2004
+
+You are free to use this program, for non-commercial purposes only
+under two conditions:
+
+(1) This note is not removed.
+
+(2) Publications using this code should reference the aforementioned
+technical report A quantitative study of gene regulation involved in
+the immune response of Anopheline mosquitoes: An Application of
+Bayesian Hierarchical Clustering of Curves</I>(2003) by N A Heard, C C
+Holmes and D A Stephens.
+
+**********************************************************************

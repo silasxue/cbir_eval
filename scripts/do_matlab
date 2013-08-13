@@ -1,0 +1,14 @@
+#!/bin/csh -f
+
+if ("$1" != "-g") then
+    echo "Terminal mode (use -g for gui mode)" 
+    unsetenv DISPLAY
+endif 
+
+if ("$1" != "-g") then
+    matlab 
+else
+    matlab & 
+endif 
+
+

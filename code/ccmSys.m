@@ -1,0 +1,195 @@
+function EXIT_SUCCESS = ccmSys(computerf,humanf,nIterations,systemid);
+cname = computerf;
+hname = humanf;
+% CCMSYS: Constrained Correlation maximization
+% EXIT_SUCCESS = ccmSys(omputer,human,samples,nIterations) attempts to
+% solve the constrained correlation maximization problem :
+% find x such that corr(y,x) is maximized given that x is monotonic.
+% y is known - human scores
+%
+% Parameters:
+%
+% computer : vector of computer scores
+% human : vector of corresponding human scores
+% sampes : number of samples used for fitting
+% nIterations: number of iterations
+% EXIT_SUCCESS = ccmSys(computer,human, nIterations);
+% solves the same problem assuming 100 samples.
+%
+% Functions called:
+%
+% getRand(file,num) - samples num number of samples from a data file
+% myfunc - defines the condition which is being minimized/maximized
+%
+%
+%    exit conditions are
+%
+% [X,FVAL,EXITFLAG] = FMINCON(FUN,X,....) returns an EXITFLAHG that
+% describes the
+%     exit condition of FMINCON. Possible values of EXITFLAG and the corresponding
+%     exit conditions are
+%
+%       1  First order optimality conditions satisfied to the specified tolerance.
+%       2  Change in X less than the specified tolerance.
+%       3  Change in the objective function value less than the specified tolerance.
+%       4  Magnitude of search direction smaller than the specified tolerance and
+%           constraint violation less than options.TolCon.
+%       5  Magnitude of directional derivative less than the specified tolerance
+%           and constraint violation less than options.TolCon.
+%       0  Maximum number of function evaluations or iterations reached.
+%      -1  Optimization terminated by the output function.
+%      -2  No feasible point found.
+%
+%   Copyright 2004-2005 Computer Vision Lab, University of Arizona.
+%   Author: Nikhil V Shirahatti
+%   Date: 02/15/2005 (Revision #2)
+%   Date : 05/08/2005 (Revision #3) 
+
+%
+% check input arguments
+%
+if nargin < 3
+    error('Not enough Inputs','CLMS requires atleast three input arguments');
+elseif nargin == 3
+    GO = 1;
+    MAX = nIterations;
+else    
+    MAX = nIterations;
+    GO = 0;
+end
+%
+% samples
+%
+samples = [100 200 300];
+MAX = 10;
+if GO == 1
+    numcycles = 3;
+else
+    numcycles = 1;
+end
+for k = 1:3
+    %
+    % Initialize parameters
+    %
+    NUM1 = samples(k);
+    cR = 0;
+    cRv =0;
+    global human;    
+    %Xest = rand(NUM1,1);
+    %
+    % Iterate till nIteration criterion is satisfied
+    %
+    for iterate = 1:MAX
+        test_length = load(computerf);
+        data_length= length(test_length);
+        cf =  load(computerf);
+        hf = load(humanf);
+        %
+        % Since entire data has too many variables, sample only a fraction of it
+        % for fitting purposes
+        %
+        [cdata,hdata] = getRand(computerf,humanf,NUM1);
+        %
+        % setting up conditions to apprx this function
+        %
+        x0 = rand(NUM1,1);
+        [cx,ind] = sort(cdata);
+        %
+        % independent variable
+        %
+        human = hdata(ind);
+        %
+        % formulating the problem
+        %
+        d1 = diag(ones(NUM1,1),0);
+        d2 = diag(-ones(NUM1,1),1);
+        A = d1 + d2(1:NUM1,1:NUM1);
+        A(NUM1,NUM1-2) =1;
+        A(NUM1,NUM1) = -1;
+        b = zeros(NUM1,1);
+        lb = min(human);
+        ub = max(human);
+        [Xest,FVAL,EXITFLAG]= fmincon(@myfunc,x0,A,b,[],[],lb,ub);
+        if EXITFLAG < 0
+            error('Fmincon has failed to converge');
+            exit;
+        end
+        %
+        % Correlation measure for the sampled data
+        %
+        c{iterate} = corrcoef(Xest,human);
+        %
+        % interpolation
+        %         
+        NUM = length(hf);
+        [cx_new,Is] = sort(cf(:,1));
+        hy_new2 = hf(Is,1);
+        for i = 1: NUM
+            [ closest,closestI] = sort((cx - cf(i)).^2);
+            lambda = sqrt(closest(1))/(ceil(NUM/NUM1));
+            hy_mapped(i) = (lambda)*Xest(closestI(1)) + (1-lambda)*Xest(closestI(2));
+        end            
+        %
+        % error
+        % 
+	size(hy_mapped)
+	size(hf)
+        euclid_error{iterate} = corrcoef(hy_mapped,hf');;
+        %
+        % clear variables
+        %
+        clear human;
+    end   
+    %
+    % calculating mean and standard deviation for correlation values for sample
+    % data
+    %
+    for i=1:iterate
+        rec_corr_sample(i) = c{i}(1,2);
+        rec_euclid_error(i) = euclid_error{i}(1,2);
+    end
+  
+    %
+    % Results
+    %
+    sample_mean(k) = mean(rec_corr_sample);
+    sample_var(k) = std(rec_corr_sample);
+    sample_euclid_error(k) = mean(rec_euclid_error);
+    sample_euclid_std(k) = std(rec_euclid_error);
+end
+[high_rec, index_high] = max(sample_euclid_error);
+sample2_mean = sample_mean(index_high)
+sample2_var = std(sample_mean)
+
+
+%
+% write to file
+%
+newDir = '/home/nvs/retrieval_analyzer_project/result/';
+newF = strcat(newDir,num2str(systemid));
+newF2 = strcat(newF,'_ccm_results.txt');
+
+newFileid = fopen(newF2,'a');
+fprintf(newFileid,'The correlation measure (sample) using combined CCM is: %f %f\n',sample2_mean,sample2_var);
+fclose(newFileid);
+%
+% save an image of error
+%
+samples;
+% Number of pairs -- depends on your input file
+xsamples = samples./3000;
+sample_euclid_error
+handle_figure = figure;
+axis([0 1 0 max(sample_euclid_error)]);
+errorbar(xsamples, sample_euclid_error, sample_euclid_std/3, sample_euclid_std/3);
+xlabel('number of data points');
+ylabel('correlation coefficient');
+title('The correlation coefficient vs. number of data points');
+fig = '/home/nvs/retrieval_analyzer_project/result/ccm_corr_points';
+fig2draw = strcat(fig,num2str(systemid));
+print(handle_figure,'-dpsc',fig2draw);
+%
+% check error
+%
+EXIT_SUCCESS = 1;
+return;

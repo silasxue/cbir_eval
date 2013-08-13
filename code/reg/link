@@ -1,0 +1,19 @@
+#!/bin/sh
+CXX="g++"
+CPPFLAGS="-Wall -O4 -Wno-deprecated -pedantic"
+LIBS="-lgsl -lgslcblas"
+#compile1="$CXX $CPPFLAGS -c *.cpp"
+#LIBS="matrix*.o vector*.o -lgsl -lgslcblas"
+#compile1="$CXX $CPPFLAGS -c *.cpp"
+#echo "$compile1"; $compile1
+echo "Linking..."
+linking1="$CXX $CPPFLAGS -o mvn_spline_fitting mvn_spline_fitting.o glm_mvn.o glm.o spline_regression.o basis_fn.o mcmc.o regression.o DataObj.o $LIBS"
+echo "$linking1"; $linking1
+linking2="$CXX $CPPFLAGS -o mvn_spline_clustering mvn_spline_clustering.o glm_mvn_clustering.o cluster_glm_mvn.o glm_mvn.o glm.o spline_regression.o basis_fn.o mcmc.o regression.o DataObj.o $LIBS"
+echo "$linking2"; $linking2
+linking3="$CXX $CPPFLAGS -o mvn_spline_mcmc_clustering mvn_spline_mcmc_clustering.o glm_mvn_mcmc_clustering.o glm_mvn_clustering.o cluster_glm_mvn.o glm_mvn.o glm.o spline_regression.o basis_fn.o mcmc.o regression.o DataObj.o $LIBS"
+echo "$linking3"; $linking3
+linking4="$CXX $CPPFLAGS -o spline_mcmc spline_mcmc.o mcmc_spline_regression.o glm_mvn.o glm.o spline_regression.o basis_fn.o mcmc.o regression.o DataObj.o $LIBS"
+echo "$linking4"; $linking4
+linking5="$CXX constrained_mcmc_spline.cpp -o constrained_mcmc_spline"
+

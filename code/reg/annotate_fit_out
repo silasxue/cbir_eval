@@ -1,0 +1,176 @@
+GSL version: 1.1.1, random generator: mt19937
+Gamma distribution parameters for variance = 0.01,0.01
+Iteration 10000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.54776e-150%    (Actual) 0/10000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.370232
+Average acceptance probability in MH                   = 4.54776e-152
+Average trans-dimensional acceptance probability in MH = 4.54776e-152
+
+Iteration 20000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.53481e-150%    (Actual) 0/20000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.373089
+Average acceptance probability in MH                   = 4.53481e-152
+Average trans-dimensional acceptance probability in MH = 4.53481e-152
+
+Iteration 30000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.55108e-150%    (Actual) 0/30000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.3695
+Average acceptance probability in MH                   = 4.55108e-152
+Average trans-dimensional acceptance probability in MH = 4.55108e-152
+
+Iteration 40000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.55897e-150%    (Actual) 0/40000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.36776
+Average acceptance probability in MH                   = 4.55897e-152
+Average trans-dimensional acceptance probability in MH = 4.55897e-152
+
+Iteration 50000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.56788e-150%    (Actual) 0/50000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.365794
+Average acceptance probability in MH                   = 4.56788e-152
+Average trans-dimensional acceptance probability in MH = 4.56788e-152
+
+Iteration 60000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.57001e-150%    (Actual) 0/60000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.365325
+Average acceptance probability in MH                   = 4.57001e-152
+Average trans-dimensional acceptance probability in MH = 4.57001e-152
+
+Iteration 70000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.57508e-150%    (Actual) 0/70000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.364206
+Average acceptance probability in MH                   = 4.57508e-152
+Average trans-dimensional acceptance probability in MH = 4.57508e-152
+
+Iteration 80000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.56656e-150%    (Actual) 0/80000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.366085
+Average acceptance probability in MH                   = 4.56656e-152
+Average trans-dimensional acceptance probability in MH = 4.56656e-152
+
+Iteration 90000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.56868e-150%    (Actual) 0/90000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.365618
+Average acceptance probability in MH                   = 4.56868e-152
+Average trans-dimensional acceptance probability in MH = 4.56868e-152
+
+Iteration 100000
+Log Posterior = -3413.23
+P(Isotonic)  = 1
+P(Antitonic) = 0
+P(Monotonic) = 1
+Number of basis functions = 2
+2          **************************************************  (1)
+
+Acceptance rates:
+Delete basis fn.:   (RB) 4.56858e-150%    (Actual) 0/100000
+
+Average log ratio of proposed to current posterior     = -348.675
+Average value of proposed log posterior in MCMC        = -3761.9
+Average log ratio of 'q' proposal probabilities in MH  = -0.36564
+Average acceptance probability in MH                   = 4.56858e-152
+Average trans-dimensional acceptance probability in MH = 4.56858e-152
+
+MCMC took 332.72 seconds.
+
+Maximum log posterior (found after 0 iterations) = -3413.23      (Gain of 0)
+recalculated final log posterior : -3413.23

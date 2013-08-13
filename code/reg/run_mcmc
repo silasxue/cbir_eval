@@ -1,0 +1,4 @@
+constrained_spline_mcmc targetfile=human.dat inputfile=computer.dat
+standardizedesignmatrix=0 priorprecision=.01 samples=10000 burnin=10000
+predictondata=1 predictovergrid=1 maxpower=1 splinegrid=20 maxnumsplines=3
+residualsfile=humans_residuals_.dat predfile= human_preds.dat

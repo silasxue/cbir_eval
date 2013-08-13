@@ -1,0 +1,5 @@
+#! /bin/csh
+
+set DIR = "/home/nvs/papers/cvpr_05/mapping/reg"
+
+${DIR}/constrained_spline_mcmc targetfile=human.dat inputfile=computer.dat priorprecision=.01 samples=10000 burnin=1000 predictondata=1 maxpower=1 splinegrid=50 maxnumsplines=5 residualsfile=humans_residuals.dat predfile=human_preds.dat

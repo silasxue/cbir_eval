@@ -1,0 +1,23 @@
+#! /bin/csh
+set CODE_DIR = "../code"
+echo "Starting CLMS bencmarking suite ....."
+
+cd ${CODE_DIR}
+do_matlab < ${CODE_DIR}/run_clms_test_script.m
+
+echo "CLMS Benchmarking has been performed ...Best of luck with the results!"
+
+
+ echo "Starting CCM benchmarking suite ...."
+ 
+cd ${CODE_DIR}
+do_matlab < ${CODE_DIR}/run_ccm_test_script.m
+
+echo "CCM Benchmarking has been performed ...Best of luck with the results!"
+
+set CODE_DIR_REG = "/home/nvs/retrieval_analyzer_project/code/reg"
+echo "Starting REG bencmarking suite ....."
+
+cd ${CODE_DIR_REG}
+do_matlab < ${CODE_DIR_REG}/run_reg_test_script.m
+
